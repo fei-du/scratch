@@ -34,3 +34,11 @@ echo "Done creating temp file, content is:"
 
 cat $tempfile
 rm -f $tempfile 2> /dev/null
+
+testUser=dufei
+
+if grep $testUser /etc/passwd ; then
+    echo 'founded'
+    echo 'founded'
+    ls $HOME
+fi
