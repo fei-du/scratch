@@ -1,0 +1,4 @@
+@include "test1"
+BEGIN {
+ print "this is scrpt test2"
+}
