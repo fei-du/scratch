@@ -42,3 +42,43 @@ if grep $testUser /etc/passwd ; then
     echo 'founded'
     ls $HOME
 fi
+
+array=(zeor one two three "four and beyond")
+declare -p array
+echo ${!array[@]}
+array=( "${array[@]:2:3}" )
+declare -p array
+
+IFS.OLD=$IFS
+IFS=$'\n'
+for entry in $(cat /etc/passwd)
+do
+    echo "values in $entry -"
+    IFS=:
+    for value in $entry
+    do
+	echo "   $value"
+    done
+done | less
+
+for state in "North Dakota" Connecticut Illinois Alabama Tennessee
+do
+    echo "$state is the next place to go"
+done | sort
+echo This completes our travels
+
+
+input="users.csv"
+while IFS=',' read -r userid name
+do
+    echo "adding $userid name is $name"
+done < "$input"
+
+case "$-" in
+    *i*)
+	echo code for interactive shell
+	;;
+    *)
+	echo code for non-interactive
+	;;
+esac
